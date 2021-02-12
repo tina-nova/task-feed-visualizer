@@ -28,31 +28,31 @@ An example directory to show how this works will be uploaded at a later date, wh
 	
 ##### Task Feed Files
 
-The tasks inside the text file itself uses a very specific format, a sample of which is as follows:
+The tasks inside the text file itself use a very specific format, a sample of which is as follows:
 
     ----------
    
     FROM:[ROLE]PERSON1
 	
-	task1 description here
+    task1 description here
 	
-	[UPDATE2JANUARY: update]
+    [UPDATE2JANUARY: update]
 	
-	STATUS:ONHOLD;AWAITINGFEEDBACK
-	PRIORITY:LOW
+    STATUS:ONHOLD;AWAITINGFEEDBACK
+    PRIORITY:LOW
 
     ----------
 	
-	FROM:[ROLE]PERSON2
+    FROM:[ROLE]PERSON2
 	
-	task2 description here
+    task2 description here
 	
-	STATUS:NOTSTARTED;MOVEDTOTOMORROW
-	PRIORITY:NORMAL/HIGH
+    STATUS:NOTSTARTED;MOVEDTOTOMORROW
+    PRIORITY:NORMAL/HIGH
 	
-	----------
+    ----------
 	
-	FROM:
+    FROM:
 	
 Dividing lines are needed, but only once between tasks. A minimum of five dashes are required to activate the program's detection code for a new task. 
 
