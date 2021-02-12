@@ -1,0 +1,17 @@
+// summary: new pseudo code (they're just notes) as of february, meant to reorganize the existing code into modules that are easily parsable by main.cpp
+
+flow:
+0. Create a tab array for each text feed file
+1. Scan all subdirectories for existing text feed files
+2. For each text feed file, create an item vector array
+3. Generate a tab for each text feed file
+4. Populate each tab with its respective item vector array
+5. Done!
+
+
+priorities array
+ASAP, URGENT, HIGH, NORMAL/HIGH, NORMAL/MEDIUM, NORMAL/LOW, LOW
+
+can only use one of those entries in the array
+
+{"","ASAP","URGENT","HIGH","NORMAL/HIGH","NORMAL/MEDIUM","NORMAL/LOW","LOW"}

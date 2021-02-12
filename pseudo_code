@@ -1,0 +1,120 @@
+
+// pseudocode for the many functions needed to create the kanban app
+
+using std::filesystem;
+
+
+vector<string> directoryList;
+vector<tab> tabs;
+
+
+int main(
+{
+	// summary: all variables are initialized and the main process is started
+
+	daysIntoTabs();
+
+
+}
+
+void daysIntoTabs()
+{
+	// summary: reads the current directory for all subdirectories containing days and then turns each day into a tab
+
+	for (auto& p: filesystem::recursive_directory_iterator(./);)
+	{
+		 if (p.isDirectory())
+		 {
+			if (p.name.Contains("Assigned"))
+			{
+				string folderName = p.name
+				folderName.Erase(folderName.find("Assigned "));
+				directoryList.push_back(folderName);
+			}
+		 }
+	}
+	// creates all the necessary tabs per day
+	createTabs(directoryList.size);
+	foreach(tab in tabs)
+	{
+		createTableItems(tab);
+	}
+
+}
+
+
+
+function CreateTableItems(tab currentTab)
+{
+	// summary: read the contents of tab and output as a label item
+
+	bool newlabel = false;
+	bool primedForDescription = false;
+	item currentItem;
+	string descriptionContent;
+
+	for (string line; getline( input, line );)
+	{
+		if (!primedForDescription)
+		{
+			switch (p)
+			{
+				case (isEmpty())
+					break;
+					// just skip if empty
+				case (isLine)
+				{
+					// create a new label if this is the first divider in an entry
+					if (currentlyMakingNewLabel.isTrue())
+						currentTab.items.push_back(currentItem);
+						currentItem.ClearAll();
+						currentlyMakingNewLabel= false;
+					else
+						currentlyMakingNewLabel = true;
+
+					break;
+				}
+				case (FROM)
+				{
+					primedForDescription = true;
+					currentItem.SetName(p.Erase(p.find("FROM:"));
+					break;
+				}
+				case (STATUS)
+				{
+					currentItem.setMTT = p.find("MOVEDTOTOMORROW").isTrue();
+					unsigned first = p.find("STATUS:");
+					currentItem.SetStatPrimary(p.erase(p.find("STATUS:"));
+				}
+				case (PRIORITY)
+				{
+					currentItem.SetPriority(p.erase(p.find("PRIORITY:"));
+				}
+			}
+		}
+		// if primed to build the item description, check if the line is the status line. if not, add the line to the description
+		else
+		{
+			if (p == STATUS)
+			{
+				primedForDescription = false;
+			}
+			else
+			{
+				descriptionContent.append(p + "\n");
+			}
+		}
+	}
+
+
+}
+
+function sortPriority()
+{
+
+}
+
+function sortStatus()
+{
+
+}
