@@ -67,7 +67,6 @@ The description can contain anything EXCEPT "STATUS" in all caps, as that is how
 	- ONHOLD
 	- ONGOING
 	- DONE
-	- MOVED
 	- CANCELED
 	
 	Note that "CANCELED" does not have its own column due to lack of space and is instead placed under "NOTSTARTED"
@@ -100,7 +99,7 @@ The description can contain anything EXCEPT "STATUS" in all caps, as that is how
 - NORMAL/LOW
 - LOW
 	
-They are sorted automatically in each column.
+	They are sorted automatically in each column.
 
 ---------
 
