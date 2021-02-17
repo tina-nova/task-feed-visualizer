@@ -24,6 +24,12 @@ class priority
 	// summary: priority class for items, to work out sorting and to store the priority status for further data manipulation
 	// took me a full workday to write this class, which I guess I can use as a reference point for other workloads and my skills development
 	public:
+
+		priority() : priorities {"ASAP","URGENT","HIGH","NORMAL/HIGH","NORMAL/MEDIUM","NORMAL/LOW","LOW"}{}
+
+		~priority(){};
+
+
 		void clear()
 		{
 			// reset to an arbitrarily high value as a placeholder null
@@ -39,7 +45,11 @@ class priority
 		// But also I spent a whole day trying to compare strings to array strings THAT ARE EXACTLY THE SAME BUT THEY DON'T WORK FOR SOME REASON so I gave up; the time spent wasn't worth the effort. If the bug pops up in the future, ASK FOR HELP. But right now (2Feb2021) it's just not worth the time.
 		string GetPriority()
 		{
-			return priorities[index];
+			//cout << "index is " << index << endl;
+			//cout << "so string should be: " << priorities[index] << endl;
+			string error = "INVALID";
+			if ((index <= 7) & (index >= 0)) return priorities[index];
+			else return error;
 		}
 
 
@@ -74,13 +84,15 @@ class priority
 			if ((inputIndex < 8) & (inputIndex > -1)) index = inputIndex;
 			else cout << "The inputted priority number " << inputIndex << " is an INVALID PRIORITY!" << endl;
 		}
+
 	private:
-		int index; // = 100;
+		int index;
 
 		// I wonder if I can store these elsewhere to save memory...
-		string priorities[7] = {"ASAP","URGENT","HIGH","NORMAL/HIGH","NORMAL/MEDIUM","NORMAL/LOW","LOW"};
+		string priorities[7];
 
 };
+
 
 class item
 {
@@ -95,6 +107,8 @@ class item
 		item(string name, string description, string statprimary, string statsec, priority prio, bool mtt) : fromName(name), descr(description), statusPrimary(statprimary), statusSecondary(statsec), currentPriority(prio), movedToOtherDay(mtt) {}
 
 		// custom initializers (if any)
+
+		~item(){}
 
 
         // getters and setters
@@ -312,6 +326,7 @@ class taskFeedFile
 		QStringList fileLocations;
 
 };
+
 
 
 // don't mind this - just making sure I still have the code I used to make alphanum work before. Still trying to figure it out btw.

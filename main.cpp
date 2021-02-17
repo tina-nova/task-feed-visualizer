@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 	taskFeedFile taskFeedFileToProcess;
 	QStringList taskFeedFiles;
 
+
 	if (argc == 2)
 	{
 		workingDirectory = argv[1];
@@ -45,12 +46,15 @@ int main(int argc, char *argv[])
 
 	else
 	{
+		cout << "Task Feed File(s) found. Setting up viewer..." << endl;
 		tabs = taskFeedFileToProcess.GetTabsVector();
 
 
 
 		// Step2. Scan all the text files to see if there are any changes, so that the viewer can update its contents
+		cout << "Getting File locations..." << endl;
 		taskFeedFiles = taskFeedFileToProcess.GetFileLocations();
+		cout << "Adding paths to watch updates..." << endl;
 		watchUpdates.addPaths(taskFeedFiles);
 		watchUpdatesQS = watchUpdates.files();
 		#ifdef DEBUG
@@ -67,6 +71,7 @@ int main(int argc, char *argv[])
 			QWidget *w = new QWidget();
 			QGridLayout *gridLayout = new QGridLayout;
 			// Step3 and Step4. Count the number of tabs and then create them in the window
+			cout << "Populating tabs... " << endl;
 			gridLayout->addWidget(PopulateTabs(tabFullList, tabs));
 			gridLayout->setSpacing(0);
 			gridLayout->setMargin(0);
