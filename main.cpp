@@ -28,11 +28,13 @@ int main(int argc, char *argv[])
 	QStringList taskFeedFiles;
 
 
+
 	if (argc == 2)
 	{
 		workingDirectory = argv[1];
 		cout << "Custom directory provided. New working directory is " << argv[1] << endl;
 	}
+
 
 	// Step1. scan all the subdirectories to populate the tabs and the items within each tab
 	taskFeedFileToProcess = PopulateTables(workingDirectory);

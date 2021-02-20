@@ -262,10 +262,12 @@ class tab
 		void SetTabName(QString newFile)
 		{
 			string newTabName = newFile.toUtf8().constData();
-            string omitString = "Task Feed - ";
+            string omitString = "Task Feed ";
             string omitEnd = ".txt";
+            string dash = "- ";
             tabName = newTabName.erase(newTabName.find(omitString),omitString.length());
-            tabName = tabName.erase(newTabName.find(omitEnd),omitEnd.length());
+            if (tabName.find(dash) != string::npos) tabName = tabName.erase(tabName.find(dash),dash.length());
+            tabName = tabName.erase(tabName.find(omitEnd),omitEnd.length());
 		}
 
         // vector containing all items

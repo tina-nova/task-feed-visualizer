@@ -21,7 +21,6 @@ HEADERS +=\
 	TFV_PopulatingFunctions.h \
     alphanum.hpp \
     MainClass.h \
-    #miscFunctions.h
 
 
 FORMS += \
