@@ -6,11 +6,11 @@
 #include <QLabel>
 #include <QScrollArea>
 #include <iostream>
-#include <TFV_CustomClassSort.h>
-
+#include "TFV_Classes.h"
 
 
 using std::vector;
+
 
 
 QLabel* MakeLabels(QLabel* label, QString stringName, int width, int height);

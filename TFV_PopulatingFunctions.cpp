@@ -6,6 +6,8 @@
 
 using std::string;
 using std::vector;
+using std::cout;
+using std::endl;
 
 
 
@@ -167,7 +169,7 @@ taskFeedFile PopulateTables(QString sourcePath)
         {
             // create table items
             cout << "Now creating table items of " << t.GetFile().toUtf8().constData() << " ... " << endl;
-            t = CreateTableItems(t,true,false);
+            t = CreateTableItems(t,false,false);
             cout << "number of tasks in this tab is: " << t.items.size() << endl;;
         }
 
@@ -196,42 +198,42 @@ string populateItems(item i)
 
 // summary: remake a readable version of each item within a tab using a better format than the one in the text file
 
-	cout << "Remaking a readable version of the item to use in the label..." << endl;
+	//cout << "Remaking a readable version of the item to use in the label..." << endl;
 	string result;
 	string newline = "\n";
 
 // 16Feb2021: need to allocate enough memory for this long string to fix a bug. Uses an arbitrary value of 1000 to be safe.
 	result.reserve(1000);
 
-	cout << "Maximum string size is: " << result.max_size() << endl;
+	//cout << "Maximum string size is: " << result.max_size() << endl;
 
 	result = "FROM: " + i.GetName() + newline
 		+ i.GetDesc()
 		+ "STATUS: " + i.GetStatPrimary();
 
 
-	cout << "Checking if a secondary status exists..." << endl;
+//	cout << "Checking if a secondary status exists..." << endl;
 	bool statSecNotEmpty = empty(i.GetStatSec());
 	if (!statSecNotEmpty)
 	{
-		cout << "Secondary status exists. Appending..." << endl;
+		//cout << "Secondary status exists. Appending..." << endl;
 		result += i.GetStatSec() + newline;
 	}
 	else
 	{
-		cout << "Secondary status does not exist." << endl;
+		//cout << "Secondary status does not exist." << endl;
 		result += newline;
 	}
 
 	//initialResult.clear();
 	result += "PRIORITY: " + i.ReadPriority();
 
-	cout << "Priority index is " << i.GetPriority().GetPriorityIndex() << endl;
+	//cout << "Priority index is " << i.GetPriority().GetPriorityIndex() << endl;
 
 // shrink the previously-allocated memory down to the actual size, to save memory
 	result.shrink_to_fit();
 
-	cout << "String size is: " << result.size() << endl;
+	//cout << "String size is: " << result.size() << endl;
 
 	return result;
 

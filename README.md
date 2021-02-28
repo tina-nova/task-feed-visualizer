@@ -106,9 +106,9 @@ The description can contain anything EXCEPT "STATUS" in all caps, as that is how
 Planned far-future features:
 
 - Built-in text editor that automatically highlights the cells based on what's being edited : Hopefully before v2.0.0
-- Automatic refresh (currently you need to restart it manually to reload the new tasks) : Hopefully before v0.5.0
+- ~~Automatic refresh (currently you need to restart it manually to reload the new tasks) : Hopefully before v0.5.0~~ Implemented in v0.1.3
 - More flexible directory structures : Hopefully before v2.0.0
-- GUI-based directory assignment : Hopefully before v0.6.0
+- ~~GUI-based directory assignment : Hopefully before v0.6.0~~ Implemented in v0.1.3
 - Drag and drop item sorting : Hopefully before v3.0.0
 
 	

@@ -3,10 +3,11 @@
 
 #include "TFV_PopulatingFunctions.h"
 #include "TFV_LabelFunctions.h"
-#include <TFV_CustomClassSort.h>
+#include "TFV_CustomClassSort.h"
 
 using std::string;
 using std::endl;
+using std::cout;
 
 
 
@@ -126,7 +127,7 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 			cout << "Sorting each item by priority..." << endl;
 			std::sort(t.items.begin(),t.items.end(),& item_less);
 
-			cout << "Assigning widgets, labels, and layouts..." << endl;
+			//cout << "Assigning widgets, labels, and layouts..." << endl;
 			// Step 0b: declare the main canvasses
 			QWidget *newTabScrollablePage = new QWidget();
 			QWidget *newTabFullPage = new QWidget();
@@ -165,15 +166,15 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 			QVector<QLabel*> done;
 			QVector<QLabel*> moved;
 
-			cout << "Step 1 and 2..." << endl;
+			//cout << "Step 1 and 2..." << endl;
 			for (item& i : t.items)
 			{
-				cout << "Step 1 for another item" << endl;
+				//cout << "Step 1 for another item" << endl;
 				// Step 1: create a new QLabel for each item
 				QLabel *itemLabel = new QLabel();
 			//	QFont font = itemLabel->font();
 				QString itemLabelText = QString::fromStdString(populateItems(i));
-				cout << "Making basic uncolored label for this item..." << endl;
+				//cout << "Making basic uncolored label for this item..." << endl;
 				itemLabel = MakeLabels(itemLabel,itemLabelText,150,150);
 
 				// Step2: color each label and then store in the appropriate vector
@@ -181,7 +182,7 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 
 
 				// (1/3) check first if the priority is valid. If not, mark it with green.
-				cout << "Checking if priority is valid..." << endl;
+				//cout << "Checking if priority is valid..." << endl;
 				if (i.ReadPriority() == "INVALID")
 				{
 					itemLabel->setStyleSheet("QLabel { background-color : green }");
@@ -191,30 +192,30 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 				else
 				{
 					// (2/3) then check if the item has been flagged for another day
-					cout << "Checking if status is MOVED" << endl;
+					//cout << "Checking if status is MOVED" << endl;
 					if (i.GetMTOD())
 					{
-						cout << "Status is 'MOVED'" << endl;
+						//cout << "Status is 'MOVED'" << endl;
 						itemLabel->setStyleSheet("QLabel { background-color : #00b0f0 }");
-						cout << "Blue background" << endl;
+						//cout << "Blue background" << endl;
 						if (i.GetStatPrimary().find("ONHOLD") != string::npos)
 						{
-							cout << "Yellow background" << endl;
+							//cout << "Yellow background" << endl;
 							itemLabel->setStyleSheet("QLabel { background-color : #FFFF00 }");
 						}
 						if (i.ReadPriority() == "ASAP" || i.ReadPriority() == "URGENT" || i.ReadPriority() == "HIGH")
 						{
-							cout << "Red background" << endl;
+							//cout << "Red background" << endl;
 							itemLabel->setStyleSheet("QLabel { background-color : #FF0000 }");
 						}
-						cout << "Appending..." << endl;
+						//cout << "Appending..." << endl;
 						moved.append(itemLabel);
 					}
 
 					// (3/3) finally, do the rest
 					else
 					{
-						cout << "Status is not 'MOVED'" << endl;
+						//cout << "Status is not 'MOVED'" << endl;
 						if (i.GetStatPrimary().find("NOTSTARTED") != string::npos)
 						{
 							if (i.ReadPriority() == "ASAP" || i.ReadPriority() == "URGENT" || i.ReadPriority() == "HIGH")
@@ -260,11 +261,11 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 					}
 				}
 
-				cout << "New item added to tab: " << i.GetDesc() << endl;
+				//cout << "New item added to tab: " << i.GetDesc() << endl;
 			}
 
 			// Step3: now add all sorted items into their respective columns
-			cout << "Step3..." << endl;
+			//cout << "Step3..." << endl;
 			ItemsToColumns(notStarted,notStarted1,notStarted2);
 			ItemsToColumns(onHold,onHold1,onHold2);
 			ItemsToColumns(ongoing,ongoing1,ongoing2);
@@ -272,7 +273,7 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 			ItemsToColumns(moved,moved1,moved2);
 
 			// Step4: add the markers first before the items...
-			cout << "Step4..." << endl;
+			//cout << "Step4..." << endl;
 			markerRow->addWidget(MakeLabels(notStartedLabel,"NOT STARTED",300,100));
 			markerRow->addWidget(MakeLabels(onHoldLabel,"ON HOLD",300,100));
 			markerRow->addWidget(MakeLabels(ongoingLabel,"ONGOING",300,100));
@@ -283,7 +284,7 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 			markerRow->addStretch();
 
 			// Step5a: put them all in the main window
-			cout << "Step5a..." << endl;
+			//cout << "Step5a..." << endl;
 			columnLayout->addLayout(notStarted1,1,0);
 			columnLayout->addLayout(notStarted2,1,1);
 			columnLayout->addLayout(onHold1,1,2);
@@ -299,7 +300,7 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 			columnLayout->setRowStretch(0,0);
 
 			// Step5b: Create a scrollbar parent for the page, to be used for export
-			cout << "Step5b..." << endl;
+			//cout << "Step5b..." << endl;
 			newTabScrollablePage->setLayout(columnLayout);
 			innerScrollArea->setWidget(newTabScrollablePage);
 			innerScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -314,7 +315,7 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 
 
 			// Step5c: Get the tab name
-			cout << "Step5c..." << endl;
+			//cout << "Step5c..." << endl;
 			string newTabLabelString = t.GetName();
 			QString newTabLabelQString = QString::fromStdString(newTabLabelString);
 

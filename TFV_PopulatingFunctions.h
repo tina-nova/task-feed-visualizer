@@ -9,10 +9,7 @@
 #include <QDirIterator>
 #include <QString>
 #include <QBoxLayout>
-
-class tab;
-class taskFeedFile;
-class item;
+#include "TFV_Classes.h"
 
 using std::string;
 
