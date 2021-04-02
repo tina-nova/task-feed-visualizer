@@ -80,6 +80,10 @@ The description can contain anything EXCEPT "STATUS" in all caps, as that is how
 		- AWAITINGACCESS
 		- UPDATING
 		- COMPILING
+		- AWAITINGDEPENDENCY
+		
+	- For NOTSTARTED:
+		- AWAITINGDEPENDENCIES
 		
 - "MOVED" is a special status that overrides all the other statuses and places it under the "MOVED" column in the viewer. It can be placed as a primary, secondary, or even third status, and can use any word after "MOVED" to denote when it should be moved to. Just make sure you create a new text file with that specific date!
 
