@@ -36,6 +36,7 @@ void Viewer::RunViewer(vector<tab> tabs, QWidget *newWidget)
 	gridLayout->setMargin(0);
 
 
+
 	// Step3c. Set the grid layout as a main layout
 	newWidget->setLayout(gridLayout);
 
@@ -46,6 +47,7 @@ void Viewer::RunViewer(vector<tab> tabs, QWidget *newWidget)
 	// Step4. If the window is already open, just put a new widget on top of the old one. Otherwise, open a new window
 	if (s->isVisible())
 	{
+		int currentTabIndex = s->currentWidget()->findChild<QTabWidget *>()->currentIndex();
 		s->setCurrentWidget(newWidget);
 		// loop just in case I somehow end up with multiple widgets
 		for (int i = s->count(); i > 0; i--)
@@ -58,6 +60,7 @@ void Viewer::RunViewer(vector<tab> tabs, QWidget *newWidget)
 				toDelete->deleteLater();
 			}
 		}
+		s->currentWidget()->findChild<QTabWidget *>()->setCurrentIndex(currentTabIndex);
 
 	}
 	else

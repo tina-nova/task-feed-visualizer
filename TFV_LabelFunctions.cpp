@@ -191,7 +191,8 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 				}
 				else
 				{
-					// (2/3) then check if the item has been flagged for another day
+					// (2/3) color all lables white by default and then check if the item has been flagged for another day
+					itemLabel->setStyleSheet("QLabel { background-color : #FFFFFF }");
 					//cout << "Checking if status is MOVED" << endl;
 					if (i.GetMTOD())
 					{
@@ -212,7 +213,7 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 						moved.append(itemLabel);
 					}
 
-					// (3/3) finally, do the rest
+					// (3/3) finally, color the labels to match their status
 					else
 					{
 						//cout << "Status is not 'MOVED'" << endl;
