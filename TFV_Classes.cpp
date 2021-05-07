@@ -53,19 +53,18 @@ using std::endl;
 
 	// potential bug: HIGH gets confirmed twice
 	// also I got array comparison to work an hour after typing that warning above. Yay.
-	// but yeah it has a bug because I don't know how to compare string length to c_str length
 		for (int i = 0; i < 7; i++)
 		{
 			string iPrio = priorities[i].c_str();
-			if ((priorityInput.find(priorities[i].c_str()) != string::npos))
+			if ((priorityInput.find(priorities[i].c_str()) != string::npos) & (priorities[i].length() == priorityInput.length()))
 			{
-				// todo: fix that bug with HIGH being confirmed twice
+				// UPDATE6MAY2021: bug for double high and double low confirmations fixed by comparing the length of both strings
 					index = i;
-					//cout << "priority confirmed to be " << index << endl;
+					cout << "priority confirmed to be " << index << endl;
 			}
 		}
 
-		//cout << "resulting priority is " << index << endl;
+		cout << "resulting priority is " << index << endl;
 
 	}
 

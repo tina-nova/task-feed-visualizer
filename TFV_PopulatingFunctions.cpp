@@ -169,7 +169,7 @@ taskFeedFile PopulateTables(QString sourcePath)
         {
             // create table items
             cout << "Now creating table items of " << t.GetFile().toUtf8().constData() << " ... " << endl;
-            t = CreateTableItems(t,false,false);
+            t = CreateTableItems(t,true,true);
             cout << "number of tasks in this tab is: " << t.items.size() << endl;;
         }
 
