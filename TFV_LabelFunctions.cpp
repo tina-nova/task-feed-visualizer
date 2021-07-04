@@ -176,6 +176,8 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 				QString itemLabelText = QString::fromStdString(populateItems(i));
 				//cout << "Making basic uncolored label for this item..." << endl;
 				itemLabel = MakeLabels(itemLabel,itemLabelText,150,150);
+				// add a tooltip for a better view of the text
+				itemLabel->setToolTip(itemLabelText);
 
 				// Step2: color each label and then store in the appropriate vector
 				// POTENTIAL BUG: too many possible paths. May need testing.

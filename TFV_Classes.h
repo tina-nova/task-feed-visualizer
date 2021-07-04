@@ -55,6 +55,8 @@ class item
 		string GetMTODAnswer();
 		void PrintCurrentItem();
 		bool operator<(item& i);
+		void SetProject(string newProject);
+		string GetProject();
 
 	private:
 
@@ -64,6 +66,7 @@ class item
 		string statusSecondary;
 		priority currentPriority;
 		bool movedToOtherDay;
+		string project;
 
 };
 

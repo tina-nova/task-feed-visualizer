@@ -93,7 +93,14 @@ tab CreateTableItems(tab currentTab, bool printLog, bool veryVerbose)
         // if primed to build the item description, check if the line is the status line. if not, add the line to the description
         else
         {
-            if (p.find("STATUS:") != string::npos)
+			if (p.find("PROJECT:") != string::npos)
+			{
+				if (printLog & veryVerbose) cout << "line contains project name" << endl;
+				string pFind = "PROJECT:";
+				currentItem.SetProject(p.erase(p.find(pFind),pFind.length()));
+				if (printLog) cout << "Project name added" << endl;
+			}
+            else if (p.find("STATUS:") != string::npos)
             {
                 primedForDescription = false;
                 currentItem.SetDescription(descriptionContent);
@@ -207,8 +214,16 @@ string populateItems(item i)
 
 	//cout << "Maximum string size is: " << result.max_size() << endl;
 
-	result = "FROM: " + i.GetName() + newline
-		+ i.GetDesc()
+	result = "FROM: " + i.GetName() + newline;
+
+	bool projectNotEmpty = empty(i.GetProject());
+	if (!projectNotEmpty)
+	{
+		result += "PROJECT: " + i.GetProject() + newline;
+	}
+	else;
+
+	result += i.GetDesc()
 		+ "STATUS: " + i.GetStatPrimary();
 
 

@@ -139,6 +139,7 @@ using std::endl;
 	{
 
 	    fromName.clear();
+	    project.clear();
 	    descr.clear();
 	    statusPrimary.clear();
 	    statusSecondary.clear();
@@ -167,6 +168,7 @@ using std::endl;
 	    // summary: for debugging only. Prints the current contents of the item
 	    cout << "----" << std::endl;
 	    cout << "FROM: " << fromName << std::endl
+	    << "PROJECT: " << project << std::endl
 	    << descr << std::endl
 	    << "STATUS: " << statusPrimary << ";" << statusSecondary << std::endl
 	    << "Moved To Tomorrow? " << GetMTODAnswer() << std::endl
@@ -178,6 +180,15 @@ using std::endl;
 		return currentPriority.GetPriorityIndex() < i.currentPriority.GetPriorityIndex();
 	}
 
+	void item::SetProject(string newProject)
+	{
+		project = newProject;
+	}
+
+	string item::GetProject()
+	{
+		return project;
+	}
 
 
 ///////////////
