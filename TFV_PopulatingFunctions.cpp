@@ -140,7 +140,9 @@ taskFeedFile PopulateTables(QString sourcePath)
 		else {}
 
 		// process sourcePath and declare other stuff
-		QDirIterator directoryLists(sourcePath, QDir::Files | QDir::NoDotAndDotDot , QDirIterator::Subdirectories );
+        QDir sourceDir = QDir(sourcePath);
+        sourceDir.setSorting(QDir::Time);
+        QDirIterator directoryLists(sourcePath, (QDir::Files | QDir::NoDotAndDotDot) , QDirIterator::Subdirectories );
 		QStringList fileLocations;
 		std::vector<tab> tabs;
 		taskFeedFile taskFeedFile;
@@ -148,7 +150,10 @@ taskFeedFile PopulateTables(QString sourcePath)
         // for each directory, check if it follows the format of "Assigned <Day> <Month>" and then add that into the list of directories
         while (directoryLists.hasNext())
         {
+            //cout << directoryLists.path().toStdString() << " is a directory that has been detected" << endl;
+            cout << directoryLists.fileName().toStdString() << " is a file that has been detected" << endl;
             if (directoryLists.filePath().contains("Assigned") & directoryLists.filePath().contains("Task Feed") & directoryLists.filePath().contains(".txt") & !directoryLists.filePath().contains("~"))
+          //  if (directoryLists.filePath().contains("Task Feed") & directoryLists.filePath().contains(".txt") &directoryLists.filePath().contains("~"))
             {
                 cout << directoryLists.filePath().toUtf8().constData() << " is a valid task feed file" << endl;
                 fileLocations.append(directoryLists.fileInfo().absoluteFilePath());
@@ -176,7 +181,7 @@ taskFeedFile PopulateTables(QString sourcePath)
         {
             // create table items
             cout << "Now creating table items of " << t.GetFile().toUtf8().constData() << " ... " << endl;
-            t = CreateTableItems(t,true,true);
+            t = CreateTableItems(t,false,false);
             cout << "number of tasks in this tab is: " << t.items.size() << endl;;
         }
 
@@ -221,7 +226,7 @@ string populateItems(item i)
 	{
 		result += "PROJECT: " + i.GetProject() + newline;
 	}
-	else;
+    else{};
 
 	result += i.GetDesc()
 		+ "STATUS: " + i.GetStatPrimary();

@@ -4,6 +4,10 @@
 #include "TFV_PopulatingFunctions.h"
 #include "TFV_LabelFunctions.h"
 #include "TFV_CustomClassSort.h"
+#include "TFV_DateOrder.h"
+#include "logger.h"
+
+#include <map>
 
 using std::string;
 using std::endl;
@@ -120,6 +124,8 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 {
 
 // summary: create the qt tabs and qt labels for each tab and label, respectively. Also colors each item and sorts by priority
+
+	vector<pair<QString,QWidget*>> tabsToReturn;
 
 	for (tab& t : tabs)
 		{
@@ -324,10 +330,14 @@ QTabWidget *PopulateTabs(QTabWidget *tabList, vector<tab> tabs)
 
 			cout << "Tab created. New tab name is: " << newTabLabelString << endl;
 
-			// Step Final: Add this page to the tab list; it's ready to go!
-			tabList->addTab(newTabFullPage, newTabLabelQString);
+			// Step 6: Add this page to the tab list; it's ready to go!
+			//tabList->addTab(newTabFullPage, newTabLabelQString);
+			tabsToReturn.push_back(std::make_pair(newTabLabelQString,newTabFullPage));
 		}
 
+	// Step Final: Sort the tabs by date
+	DateOrder::sortByDate(tabsToReturn, tabList);
+	logger::log("Tabs sorted and ready for rendering");
 	return tabList;
 }
 

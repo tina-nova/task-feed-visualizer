@@ -11,7 +11,9 @@ CONFIG += c++17
 SOURCES += \
 	TFV_Classes.cpp \
 	TFV_CustomClassSort.cpp \
+	TFV_DateOrder.cpp \
 	TFV_Viewer.cpp \
+	logger.cpp \
     main.cpp \
     	TFV_LabelFunctions.cpp \
 	TFV_PopulatingFunctions.cpp
@@ -20,11 +22,13 @@ HEADERS +=\
 	TFV_Classes.h \
 	TFV_Classes.h \
 	TFV_CustomClassSort.h \
+	TFV_DateOrder.h \
 	TFV_LabelFunctions.h \
 	TFV_PopulatingFunctions.h \
 	TFV_Viewer.h \
     alphanum.hpp \
     MainClass.h \
+	logger.h
 
 
 FORMS += \

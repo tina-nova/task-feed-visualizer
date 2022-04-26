@@ -60,11 +60,11 @@ using std::endl;
 			{
 				// UPDATE6MAY2021: bug for double high and double low confirmations fixed by comparing the length of both strings
 					index = i;
-					cout << "priority confirmed to be " << index << endl;
+                    //cout << "priority confirmed to be " << index << endl;
 			}
 		}
 
-		cout << "resulting priority is " << index << endl;
+        //cout << "resulting priority is " << index << endl;
 
 	}
 

@@ -4,6 +4,7 @@
 #include "TFV_LabelFunctions.h"
 #include "TFV_Viewer.h"
 #include "TFV_PopulatingFunctions.h"
+#include "logger.h"
 
 Viewer::Viewer(QObject *parent) : QObject(parent)
 {
@@ -34,8 +35,6 @@ void Viewer::RunViewer(vector<tab> tabs, QWidget *newWidget)
 	gridLayout->addWidget(PopulateTabs(tabFullList, tabs));
 	gridLayout->setSpacing(0);
 	gridLayout->setMargin(0);
-
-
 
 	// Step3c. Set the grid layout as a main layout
 	newWidget->setLayout(gridLayout);

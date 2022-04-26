@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	// Step0a. this tab vector array will contain all the data in memory. It's probably an incredibly terrible and non-secure way to store it, but whatever it's not like I'm gonna make this thing connect to the internet or anything. Also as of 1Feb2021 I don't know any other way to implement it.
 	vector<tab> tabs;
 	// Step0b. This will be used to get the directory from which to retrieve the subdirectories full of task feeds
-	QString workingDirectory;
+    QString workingDirectory;
 	// Step0c. This will be used to process the working directory and retrieve both the tab array and a list of files to continuously check for modifications
 	taskFeedFile taskFeedFileToProcess;
 	QStringList taskFeedFiles;
